@@ -39,7 +39,6 @@ input:
 	leaq 	-16(%rsp), %rsi         #load it into effective memory    
 	call    scanf                   #call the reading subroutine
 	 
-	movq 	-16(%rsp), %rsi         #load the input value into RSI
 	movq 	%rsi, %rax              #save the input value into rax for later usage
 	 
 	movq 	%rbp, %rsp              #clear the stack of the subroutine
