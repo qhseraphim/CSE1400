@@ -9,7 +9,7 @@ main:
 	movq 	%rsp, %rbp              #moving the stack pointer at the start of the stack
 	 
 	call 	input                   #getting the base
-    movq    %rax, base              #save the base into memory
+	movq    %rax, base              #save the base into memory
  
 	call 	input                   #getting the exponent
 	movq    %rax, exp               #save the exponent into memory
@@ -20,17 +20,18 @@ main:
 
 	movq	%rax, result            #save the result into memory
 
-    movq 	$format, %rdi           #specify the format of the ouput
-    movq   	$0, %rax                #reinitialize the rax register
+   	movq 	$format, %rdi           #specify the format of the ouput
+   	movq   	$0, %rax                #reinitialize the rax register
 	movq 	(result), %rsi          #load the result
 	call 	printf                  #print it
-	 
+	
+	movq    %rbp, %rsp
 	popq 	%rbp                    #restore base pointer location
 	movq 	$0, %rdi                #load the exit code 0
 	call    exit
  
 input:
-	push    %rbp                   #initialize the stack layout for the subroutine
+	pushq    %rbp                   #initialize the stack layout for the subroutine
 	movq 	%rsp, %rbp           
 	 
 	movq 	$0, %rax
@@ -38,7 +39,7 @@ input:
 	subq 	$16,  %rsp              #subtract the memory required to store the input
 	leaq 	-16(%rsp), %rsi         #load it into effective memory    
 	call    scanf                   #call the reading subroutine
-	 
+	
 	movq 	%rsi, %rax              #save the input value into rax for later usage
 	 
 	movq 	%rbp, %rsp              #clear the stack of the subroutine
