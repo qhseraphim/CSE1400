@@ -1,0 +1,27 @@
+# this is how to run and debug your assembly
+
+
+
+# going to the folder where you are working on an assembly file
+cd /mnt/e/Computer\ Science\ \&\ Engineering/CSE1400
+
+# opening the visual studio code environment for such a folder
+code .
+
+    # assembling your code with no debug flags, to destination, from source
+    gcc -no-pie -o nameofyourprogram nameofyoursource.s
+
+    # running the assembled program
+    ./nameofyourprogram
+
+        # example of regular usage
+        gcc -no-pie -o t1 recursion.s
+        ./t1
+
+    # assemble your code with flags such that you can debug, to destination, from source
+    gcc -no-pie -g -o nameofyourprogram nameofyoursource.s
+
+    # debugging run of your assembled program
+    gdb ./nameofyourprogram
+
+
